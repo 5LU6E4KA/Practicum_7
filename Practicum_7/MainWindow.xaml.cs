@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace Practicum_7
 {
@@ -21,44 +22,41 @@ namespace Practicum_7
         public MainWindow()
         {
             InitializeComponent();
-        }
-        private void Result_calculate_TextChanged(object sender, TextChangedEventArgs e){}
-        private void One_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '1';
-        private void Two_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '2';
-        private void Three_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '3';
-        private void Four_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '4';
-        private void Five_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '5';
-        private void Six_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '6';
-        private void Seven_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '7';
-        private void Eight_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '8';
-        private void Nine_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '9';
-        private void Null_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '0';
-        private void AC_button(object sender, RoutedEventArgs e) => Result_calculate.Clear();
-        private void Percent_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '%';
-        private void Division_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '÷';
-        private void Multiplication_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '×';
-        private void Subtraction_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '-';
-        private void Addition_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '+';
-        private void Factorial_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '!';
-        private void Dot_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '.';
-        private void SquareRoot_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '√';
-        private void LeftBracket_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '(';
-        private void RightBracket_button(object sender, RoutedEventArgs e) => Result_calculate.Text += ')';
-        private void Degree_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '^';
-        private void Equals_button(object sender, RoutedEventArgs e) => Result_calculate.Text += '=';
-        private void Pi_button(object sender, RoutedEventArgs e) => Result_calculate.Text += 'π';
-        private void DeleteElem_button(object sender, RoutedEventArgs e)
-        {
-            if (Result_calculate.Text.Length != 0)
+            foreach(UIElement elem in MainBlock.Children)
             {
-                Result_calculate.Text = Result_calculate.Text.Remove(Result_calculate.Text.Length - 1);
+                if(elem is Button)
+                {
+                   ((Button)elem).Click += Button_Click;
+                }
+            }
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string vvod_str = Convert.ToString(((Button)e.OriginalSource).Content);
+            if (vvod_str == "AC") 
+            { 
+                Result.Clear(); 
+            }
+            else if (vvod_str == "🢠" && Result.Text.Length != 0)
+            {
+                Result.Text = Result.Text.Remove(Result.Text.Length - 1);
+            }
+            
+            else if(vvod_str == "=") 
+            {
+                string value = new DataTable().Compute(Result.Text, null).ToString(); Result.Text = value;
+            }
+            else if (vvod_str == "%") 
+            {
+                Result.Text += "/100 ";
+            }
+            else 
+            { 
+                Result.Text += vvod_str; 
             }
         }
-        private void Start_Addiion_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
     }
 }
 

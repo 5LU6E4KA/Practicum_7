@@ -8,7 +8,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="10" BorderBrush="Transparent" BorderThickness="3"
+                    <Border CornerRadius="10" BorderBrush="Orange" BorderThickness="3"
                                 Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -34,7 +34,7 @@
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="FontWeight" Value="Bold" />
-                <Setter Property="Foreground" Value="Lavender" />
+                <Setter Property="Foreground" Value="Black" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">

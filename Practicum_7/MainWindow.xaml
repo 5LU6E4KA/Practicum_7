@@ -5,34 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Practicum_7"
         mc:Ignorable="d" ResizeMode="NoResize"
-        Title="Виталев_220_Калькулятор" Height="470" Width="475">
-    <Grid Background="Bisque">
-        <Button Content="1" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top" Height="39" Width="72" Click="One_button"/>
-        <Button Content="2" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="104,334,0,0" VerticalAlignment="Top" Height="39" Width="72" Click="Two_button"/>
-        <Button Content="3" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="196,334,0,0" VerticalAlignment="Top" Height="40" Width="72" Click="Three_button"/>
-        <Button Content="4" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="10,283,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="Four_button"/>
-        <Button Content="5" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="104,283,0,0" VerticalAlignment="Top" Height="39" Width="72" Click="Five_button"/>
-        <Button Content="6" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="196,282,0,0" VerticalAlignment="Top" Height="40" Width="72" Click="Six_button"/>
-        <Button Content="7" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Height="40" Width="72" Click="Seven_button"/>
-        <Button Content="8" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="104,231,0,0" VerticalAlignment="Top" Height="39" Width="72" RenderTransformOrigin="-1.46,3.353" Click="Eight_button"/>
-        <Button Content="9" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="196,231,0,0" VerticalAlignment="Top" Height="39" Width="72" Click="Nine_button"/>
-        <Button Content="0" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="104,384,0,0" VerticalAlignment="Top" Height="40" Width="72" Click="Null_button"/>
-        <Button Content="AC" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Height="40" Width="72" Click="AC_button"/>
-        <Button Content="%" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="196,178,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.706,0.538" Click="Percent_button"/>
-        <Button Content="÷" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="288,178,0,0" VerticalAlignment="Top" Height="40" Width="72" Click="Division_button"/>
-        <Button Content="×" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="288,230,0,0" VerticalAlignment="Top" Height="40" Width="72" Click="Multiplication_button"/>
-        <Button Content="-" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="288,282,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="Subtraction_button"/>
-        <Button Content="+" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="288,334,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="Addition_button"/>
-        <Button Content="!" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="288,384,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="Factorial_button"/>
-        <Button Content="." Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="10,384,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="Dot_button"/>
-        <Button Content="√" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="196,384,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="SquareRoot_button"/>
-        <Button Content="(" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="377,178,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="LeftBracket_button"/>
-        <Button Content=")" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="377,230,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="RightBracket_button"/>
-        <Button Content="^" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="377,282,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="Degree_button"/>
-        <Button Content="=" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="377,384,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="Equals_button"/>
-        <Button Content="π" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="104,178,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="Pi_button"/>
-        <Button Content="🢠" Style="{DynamicResource GlassButton}" HorizontalAlignment="Left" Margin="377,334,0,0" VerticalAlignment="Top" Height="40" Width="72" RenderTransformOrigin="0.452,-1.594" Click="DeleteElem_button"/>
-        <TextBox Name="Result_calculate" HorizontalAlignment="Center" Height="86" Margin="0,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="367" TextChanged="Result_calculate_TextChanged" FontSize="20" FontFamily="Times New Roman" Foreground="Black"/>
+        Title="Виталев_220_Калькулятор" Height="480" Width="475">
+    <Grid x:Name="MainBlock" Background="#FF343C3C">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBox x:Name="Result" Grid.ColumnSpan="5" Margin="10,10,10,10" TextWrapping="Wrap" FontSize="20" FontFamily="Times New Roman" Background="#FFC1C1C1"/>
+        
+        <Button Grid.Column="0" Grid.Row="1" Style="{DynamicResource GlassButton}" >AC</Button>
+        <Button Grid.Column="1" Grid.Row="1" Style="{DynamicResource GlassButton}">🢠</Button>
+        <Button Grid.Column="2" Grid.Row="1" Style="{DynamicResource GlassButton}">%</Button>
+        <Button Grid.Column="3" Grid.Row="1" Style="{DynamicResource GlassButton}">/</Button>
+        <Button Grid.Column="4" Grid.Row="1" Style="{DynamicResource GlassButton}">*</Button>
+        
+        <Button Grid.Column="0" Grid.Row="2" Style="{DynamicResource GlassButton}">7</Button>
+        <Button Grid.Column="1" Grid.Row="2" Style="{DynamicResource GlassButton}">8</Button>
+        <Button Grid.Column="2" Grid.Row="2" Style="{DynamicResource GlassButton}">9</Button>
+        <Button Grid.Column="3" Grid.Row="2" Style="{DynamicResource GlassButton}">-</Button>
+        <Button Grid.Column="4" Grid.Row="2" Style="{DynamicResource GlassButton}">+</Button>
+        
+        <Button Grid.Column="0" Grid.Row="3" Style="{DynamicResource GlassButton}">4</Button>
+        <Button Grid.Column="1" Grid.Row="3" Style="{DynamicResource GlassButton}">5</Button>
+        <Button Grid.Column="2" Grid.Row="3" Style="{DynamicResource GlassButton}">6</Button>
+        <Button Grid.Column="3" Grid.Row="3" Style="{DynamicResource GlassButton}">√</Button>
+        <Button Grid.Column="4" Grid.Row="3" Style="{DynamicResource GlassButton}">.</Button>
+        
+        <Button Grid.Column="0" Grid.Row="4" Style="{DynamicResource GlassButton}">1</Button>
+        <Button Grid.Column="1" Grid.Row="4" Style="{DynamicResource GlassButton}">2</Button>
+        <Button Grid.Column="2" Grid.Row="4" Style="{DynamicResource GlassButton}">3</Button>
+        <Button Grid.Column="3" Grid.Row="4" Style="{DynamicResource GlassButton}">0</Button>
+        <Button Grid.Column="4" Grid.Row="4" Style="{DynamicResource GlassButton}">=</Button>
 
     </Grid>
 </Window>
