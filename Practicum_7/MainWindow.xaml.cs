@@ -23,7 +23,7 @@ namespace Practicum_7
 
         public void ShowError(string text)
         {
-            MessageBox.Show(text, "Exceptions", MessageBoxButton.OKCancel, MessageBoxImage.Error);
+            MessageBox.Show(text, "Exceptions", MessageBoxButton.OK, MessageBoxImage.Error);
             Result.Clear();
         }
         public MainWindow()
@@ -93,13 +93,13 @@ namespace Practicum_7
                     {
                         i++;
                     }
+                    i--;
                     j = i;
                     while (i > expression.IndexOf('√'))
                     {
                         exp = exp.Insert(0, expression[i].ToString());
                         i--;
                     }
-
                     double sqr = Convert.ToDouble(exp);
                     expression = expression.Remove(index, j - index + 1);
                     expression = expression.Insert(index, Math.Sqrt(sqr).ToString().Replace(',', '.'));
