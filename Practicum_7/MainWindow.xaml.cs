@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,43 +18,98 @@ namespace Practicum_7
 {
     public partial class MainWindow : Window
     {
+        public delegate void Error(string text);
+        public event Error? Notify;
+
+        public void ShowError(string text)
+        {
+            MessageBox.Show(text, "Exceptions", MessageBoxButton.OKCancel, MessageBoxImage.Error);
+            Result.Clear();
+        }
         public MainWindow()
         {
+            Notify += ShowError;
             InitializeComponent();
             foreach(UIElement elem in MainBlock.Children)
             {
                 if(elem is Button)
                 {
-                   ((Button)elem).Click += Button_Click;
+                    Button btn = ((Button)elem);
+                    btn.Click += Button_Click;
+                    btn.Background = (btn.Content.ToString() == "=") ? new SolidColorBrush(Colors.Blue) : (btn.Content.ToString() == "AC") ? new SolidColorBrush(Colors.Red) : new SolidColorBrush(Colors.White);
                 }
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string vvod_str = Convert.ToString(((Button)e.OriginalSource).Content);
-            if (vvod_str == "AC") 
+            try
             { 
-                Result.Clear(); 
+                string vvod_str = Convert.ToString(((Button)e.OriginalSource).Content);
+                
+                switch(vvod_str)
+                {
+                    case "AC":
+                        Result.Clear();
+                        break;
+
+                    case "🢠":
+                        Result.Text = Result.Text.Length != 0 ? Result.Text.Remove(Result.Text.Length - 1) : null;
+                        break;
+
+                    case "=":
+                        try
+                        {
+                            string value = new DataTable().Compute(Sqrt_str(Result.Text + " ").Replace("%", "/100"), null).ToString(); Result.Text = value;
+                        }
+                        catch
+                        {
+                            throw new Exception("Действие выполнить невозможно");
+                        }
+                        break;
+                    default: 
+                        Result.Text += vvod_str; 
+                        break;
+                }
             }
-            else if (vvod_str == "🢠" && Result.Text.Length != 0)
+            catch (Exception ex)
             {
-                Result.Text = Result.Text.Remove(Result.Text.Length - 1);
+                Notify?.Invoke(ex.Message);
             }
-            
-            else if(vvod_str == "=") 
+        }
+        public static string Sqrt_str(string expression)
+        {
+            try
             {
-                string value = new DataTable().Compute(Result.Text, null).ToString(); Result.Text = value;
+
+                while (expression.Contains('√'))
+                {
+                    int i = expression.IndexOf('√') + 1;
+                    int j;
+                    int index = expression.IndexOf('√');
+                    string exp = "";
+
+                    while (Enumerable.Range(0, 10).Select(x => x.ToString()).Contains(expression[i].ToString()))
+                    {
+                        i++;
+                    }
+                    j = i;
+                    while (i > expression.IndexOf('√'))
+                    {
+                        exp = exp.Insert(0, expression[i].ToString());
+                        i--;
+                    }
+
+                    double sqr = Convert.ToDouble(exp);
+                    expression = expression.Remove(index, j - index + 1);
+                    expression = expression.Insert(index, Math.Sqrt(sqr).ToString().Replace(',', '.'));
+                }
             }
-            else if (vvod_str == "%") 
+            catch
             {
-                Result.Text += "/100 ";
+                return "Error";
             }
-            else 
-            { 
-                Result.Text += vvod_str; 
-            }
+            return expression;
         }
     }
 }
