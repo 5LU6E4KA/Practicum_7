@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Practicum_7"
         mc:Ignorable="d" ResizeMode="NoResize"
-        Title="Виталев_220_Калькулятор" Height="480" Width="475">
+        Title="Виталев_220_Калькулятор" Height="480" Width="528">
     <Grid x:Name="MainBlock" Background="#FF343C3C">
-        
+
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -17,38 +17,45 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="88"/>
+            
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="Result" Grid.ColumnSpan="5" Margin="10,10,10,10" TextWrapping="Wrap" FontSize="20" FontFamily="Times New Roman" Background="#FFC1C1C1" Style="{DynamicResource MyBox}"/>
+        <TextBox x:Name="Result" Grid.ColumnSpan="7" Margin="10,10,10,10" TextWrapping="Wrap" FontSize="20" FontFamily="Times New Roman" Background="#FFC1C1C1" Style="{DynamicResource MyBox}"/>
 
-        <Button Grid.Column="0" Grid.Row="1" Style="{DynamicResource GlassButton}" >AC</Button>
-        <Button Grid.Column="1" Grid.Row="1" Style="{DynamicResource GlassButton}">🢠</Button>
-        <Button Grid.Column="2" Grid.Row="1" Style="{DynamicResource GlassButton}">%</Button>
-        <Button Grid.Column="3" Grid.Row="1" Style="{DynamicResource GlassButton}">/</Button>
-        <Button Grid.Column="4" Grid.Row="1" Style="{DynamicResource GlassButton}">*</Button>
+        <Button Grid.Column="0" Grid.Row="1" Style="{DynamicResource GlassButton}" Margin="15,14,12,14" >AC</Button>
+        <Button Grid.Column="1" Grid.Row="1" Style="{DynamicResource GlassButton}" Margin="15,14,12,14">!</Button>
+        <Button Grid.Column="2" Grid.Row="1" Style="{DynamicResource GlassButton}" Margin="15,14,11,14">%</Button>
+        <Button Grid.Column="3" Grid.Row="1" Style="{DynamicResource GlassButton}" Margin="15,14,12,14">/</Button>
+        <Button Grid.Column="4" Grid.Row="1" Style="{DynamicResource GlassButton}" Margin="22,14,21,14">*</Button>
+        <Button Grid.Column="5" Grid.Row="1" Style="{DynamicResource GlassButton}" Margin="22,14,21,14">🢠</Button>
         
-        <Button Grid.Column="0" Grid.Row="2" Style="{DynamicResource GlassButton}">7</Button>
-        <Button Grid.Column="1" Grid.Row="2" Style="{DynamicResource GlassButton}">8</Button>
-        <Button Grid.Column="2" Grid.Row="2" Style="{DynamicResource GlassButton}">9</Button>
-        <Button Grid.Column="3" Grid.Row="2" Style="{DynamicResource GlassButton}">-</Button>
-        <Button Grid.Column="4" Grid.Row="2" Style="{DynamicResource GlassButton}">+</Button>
-        
-        <Button Grid.Column="0" Grid.Row="3" Style="{DynamicResource GlassButton}">4</Button>
-        <Button Grid.Column="1" Grid.Row="3" Style="{DynamicResource GlassButton}">5</Button>
-        <Button Grid.Column="2" Grid.Row="3" Style="{DynamicResource GlassButton}">6</Button>
-        <Button Grid.Column="3" Grid.Row="3" Style="{DynamicResource GlassButton}">√</Button>
-        <Button Grid.Column="4" Grid.Row="3" Style="{DynamicResource GlassButton}">.</Button>
-        
-        <Button Grid.Column="0" Grid.Row="4" Style="{DynamicResource GlassButton}">1</Button>
-        <Button Grid.Column="1" Grid.Row="4" Style="{DynamicResource GlassButton}">2</Button>
-        <Button Grid.Column="2" Grid.Row="4" Style="{DynamicResource GlassButton}">3</Button>
-        <Button Grid.Column="3" Grid.Row="4" Style="{DynamicResource GlassButton}">0</Button>
-        <Button Grid.Column="4" Grid.Row="4" Style="{DynamicResource GlassButton}">=</Button>
+
+        <Button Grid.Column="0" Grid.Row="2" Style="{DynamicResource GlassButton}" Margin="15,14,12,13">7</Button>
+        <Button Grid.Column="1" Grid.Row="2" Style="{DynamicResource GlassButton}" Margin="15,14,12,13">8</Button>
+        <Button Grid.Column="2" Grid.Row="2" Style="{DynamicResource GlassButton}" Margin="15,14,11,13">9</Button>
+        <Button Grid.Column="3" Grid.Row="2" Style="{DynamicResource GlassButton}" Margin="15,14,12,13">-</Button>
+        <Button Grid.Column="4" Grid.Row="2" Style="{DynamicResource GlassButton}" Margin="22,14,21,13">+</Button>
+        <Button Grid.Column="5" Grid.Row="2" Style="{DynamicResource GlassButton}" Margin="22,14,21,14">(</Button>
+
+        <Button Grid.Column="0" Grid.Row="3" Style="{DynamicResource GlassButton}" Margin="15,14,12,14">4</Button>
+        <Button Grid.Column="1" Grid.Row="3" Style="{DynamicResource GlassButton}" Margin="15,14,12,14">5</Button>
+        <Button Grid.Column="2" Grid.Row="3" Style="{DynamicResource GlassButton}" Margin="15,14,11,14">6</Button>
+        <Button Grid.Column="3" Grid.Row="3" Style="{DynamicResource GlassButton}" Margin="15,14,12,14">√</Button>
+        <Button Grid.Column="4" Grid.Row="3" Style="{DynamicResource GlassButton}" Margin="22,14,21,14">.</Button>
+        <Button Grid.Column="5" Grid.Row="3" Style="{DynamicResource GlassButton}" Margin="22,14,21,14">)</Button>
+
+        <Button Grid.Column="0" Grid.Row="4" Style="{DynamicResource GlassButton}" Margin="15,14,12,14">1</Button>
+        <Button Grid.Column="1" Grid.Row="4" Style="{DynamicResource GlassButton}" Margin="15,14,12,14">2</Button>
+        <Button Grid.Column="2" Grid.Row="4" Style="{DynamicResource GlassButton}" Margin="15,14,11,14">3</Button>
+        <Button Grid.Column="3" Grid.Row="4" Style="{DynamicResource GlassButton}" Margin="15,14,12,14">0</Button>
+        <Button Grid.Column="4" Grid.Row="4" Style="{DynamicResource GlassButton}" Margin="22,14,21,14">=</Button>
+        <Button Grid.Column="5" Grid.Row="4" Style="{DynamicResource GlassButton}" Margin="22,14,21,14">π</Button>
 
     </Grid>
 </Window>

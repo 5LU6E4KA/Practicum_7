@@ -30,9 +30,9 @@ namespace Practicum_7
         {
             Notify += ShowError;
             InitializeComponent();
-            foreach(UIElement elem in MainBlock.Children)
+            foreach (UIElement elem in MainBlock.Children)
             {
-                if(elem is Button)
+                if (elem is Button)
                 {
                     Button btn = ((Button)elem);
                     btn.Click += Button_Click;
@@ -44,10 +44,10 @@ namespace Practicum_7
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
+            {
                 string vvod_str = Convert.ToString(((Button)e.OriginalSource).Content);
-                
-                switch(vvod_str)
+
+                switch (vvod_str)
                 {
                     case "AC":
                         Result.Clear();
@@ -57,18 +57,25 @@ namespace Practicum_7
                         Result.Text = Result.Text.Length != 0 ? Result.Text.Remove(Result.Text.Length - 1) : null;
                         break;
 
+                    case "π":
+                        Result.Text += " * 3.141592653589793";
+                        break;
+
                     case "=":
                         try
                         {
-                            string value = new DataTable().Compute(Sqrt_str(Result.Text + " ").Replace("%", "/100"), null).ToString(); Result.Text = value;
+                            
+                            Result.Text = InputFactorialString(Result.Text);
+                            string value = new DataTable().Compute(Sqrt_str(Result.Text + " ").Replace("%", "/100"), null) ? .ToString();
+                            Result.Text = value;
                         }
                         catch
                         {
                             throw new Exception("Действие выполнить невозможно");
                         }
                         break;
-                    default: 
-                        Result.Text += vvod_str; 
+                    default:
+                        Result.Text += vvod_str;
                         break;
                 }
             }
@@ -77,6 +84,63 @@ namespace Practicum_7
                 Notify?.Invoke(ex.Message);
             }
         }
+        public static double Factorial(int num)
+        {
+            if (num == 1) return 1;
+            if (num >= 0)
+            {
+                double result = num * Factorial(num - 1);
+                return result;
+            }
+            return 0;
+        }
+        public static string InputFactorialString(string letter)
+        {
+            try
+            {
+                while (letter.Contains('!'))
+                {
+                    int i = letter.IndexOf('!') - 1;
+                    string exp = "";
+                    string res = "";
+
+                    int count_f = 0;
+                    int count_l = 1;
+                    while (count_f != count_l)
+                    {
+                        i--;
+                        if (letter[i] == ')')
+                        {
+                            count_l++;
+                        }
+                        if (letter[i] == '(')
+                        {
+                            count_f++;
+                        }
+                        exp = exp.Insert(0, letter[i].ToString());
+                    }
+                    exp += ")";
+                   
+                    res = new DataTable().Compute(exp, String.Empty).ToString().Replace(',', '.');
+                    try
+                    {
+                        int fact = Convert.ToInt32(res);
+                        letter = letter.Remove(i, letter.IndexOf('!') - i + 1);
+                        letter = letter.Insert(i, Factorial(fact).ToString().Replace(',', '.'));
+                    }
+                    catch
+                    {
+                        return "Ошибка вычисления факториала!";
+                    }             
+                }
+                return letter;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
         public static string Sqrt_str(string expression)
         {
             try
@@ -111,6 +175,7 @@ namespace Practicum_7
             }
             return expression;
         }
+       
     }
 }
 
