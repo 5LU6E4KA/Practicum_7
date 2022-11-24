@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Practicum_7
 {
@@ -58,23 +59,34 @@ namespace Practicum_7
                         break;
 
                     case "π":
-                        Result.Text += " * 3.141592653589793";
+                        Result.Text += $" * {Math.PI.ToString().Replace(',','.')}";
+                        break;
+                    case "0":
+                        Result.Text += "0.";
+                        break;
+                    case ".":
+                        if(!Result.Text.Contains(stringInputt))
+                        {
+                            Result.Text += stringInputt;
+                        }
                         break;
 
                     case "=":
                         try
                         {
-                            if(Result.Text.Contains("/0"))
-                            {
-                                throw new Exception("Деление на ноль");
-                            }
+                            //if(Result.Text.Contains(new Regex("^(?:\\d+([*+-]|/(?!0)))+\\d+$").Match(Result.Text).ToString()))
+                            //{
+                            //    throw new Exception("Деление на ноль");
+                            //}
+                            
                             Result.Text = GetFactorial(Result.Text);
-                            string value = new DataTable().Compute(GetSqrt(Result.Text + " ").Replace("%", "/100"), null) ? .ToString();
+                            string value = new DataTable().Compute(GetSqrt(Result.Text + " ").Replace("%", "/100"), null)?.ToString();
                             Result.Text = value;
+                           
                         }
                         catch (Exception ex)
                         {
-                            throw new Exception("Действие выполнить невозможно");
+                            throw new Exception("Badly");
                         }
                         break;
                     default:
