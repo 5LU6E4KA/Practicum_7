@@ -45,9 +45,9 @@ namespace Practicum_7
         {
             try
             {
-                string vvod_str = Convert.ToString(((Button)e.OriginalSource).Content);
+                string stringInputt = Convert.ToString(((Button)e.OriginalSource).Content);
 
-                switch (vvod_str)
+                switch (stringInputt)
                 {
                     case "AC":
                         Result.Clear();
@@ -64,18 +64,21 @@ namespace Practicum_7
                     case "=":
                         try
                         {
-                            
-                            Result.Text = InputFactorialString(Result.Text);
-                            string value = new DataTable().Compute(Sqrt_str(Result.Text + " ").Replace("%", "/100"), null) ? .ToString();
+                            if(Result.Text.Contains("/0"))
+                            {
+                                throw new Exception("Деление на ноль");
+                            }
+                            Result.Text = GetFactorial(Result.Text);
+                            string value = new DataTable().Compute(GetSqrt(Result.Text + " ").Replace("%", "/100"), null) ? .ToString();
                             Result.Text = value;
                         }
-                        catch
+                        catch (Exception ex)
                         {
                             throw new Exception("Действие выполнить невозможно");
                         }
                         break;
                     default:
-                        Result.Text += vvod_str;
+                        Result.Text += stringInputt;
                         break;
                 }
             }
@@ -94,34 +97,32 @@ namespace Practicum_7
             }
             return 0;
         }
-        public static string InputFactorialString(string letter)
+        public static string GetFactorial(string letter)
         {
             try
             {
                 while (letter.Contains('!'))
                 {
                     int i = letter.IndexOf('!') - 1;
-                    string exp = "";
+                    string k = "";
                     string res = "";
-
-                    int count_f = 0;
-                    int count_l = 1;
-                    while (count_f != count_l)
+                    int countFL = 0;
+                    int countLG = 1;
+                    while (countFL != countLG)
                     {
                         i--;
                         if (letter[i] == ')')
                         {
-                            count_l++;
+                            countLG++;
                         }
                         if (letter[i] == '(')
                         {
-                            count_f++;
+                            countFL++;
                         }
-                        exp = exp.Insert(0, letter[i].ToString());
+                        k = k.Insert(0, letter[i].ToString());
                     }
-                    exp += ")";
-                   
-                    res = new DataTable().Compute(exp, String.Empty).ToString().Replace(',', '.');
+                    k += ")";
+                    res = new DataTable().Compute(k, String.Empty).ToString().Replace(',', '.');
                     try
                     {
                         int fact = Convert.ToInt32(res);
@@ -141,7 +142,7 @@ namespace Practicum_7
             }
         }
 
-        public static string Sqrt_str(string expression)
+        public static string GetSqrt(string expression)
         {
             try
             {
@@ -152,7 +153,6 @@ namespace Practicum_7
                     int j;
                     int index = expression.IndexOf('√');
                     string exp = "";
-
                     while (Enumerable.Range(0, 10).Select(x => x.ToString()).Contains(expression[i].ToString()))
                     {
                         i++;

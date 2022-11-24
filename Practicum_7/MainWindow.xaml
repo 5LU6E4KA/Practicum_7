@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Practicum_7"
         mc:Ignorable="d" ResizeMode="NoResize"
-        Title="Виталев_220_Калькулятор" Height="480" Width="528">
+        Title="Виталев_3ПКС-220_ПР7" Height="480" Width="528">
     <Grid x:Name="MainBlock" Background="#FF343C3C">
 
         <Grid.RowDefinitions>
